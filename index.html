@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hosung Kim · People & Business Analytics</title>
+<meta name="description" content="Hosung Kim: MS Business Analytics candidate at USC Marshall (December 2027), focused on people analytics and organization data.">
+<meta property="og:title" content="Hosung Kim · People & Business Analytics">
+<meta property="og:description" content="MSBA candidate at USC Marshall. Research assistant on organization design data; people analytics focus.">
+<meta property="og:image" content="assets/hosung-portrait.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%231c1d20'/%3E%3Ctext x='32' y='42' font-family='Arial' font-size='28' fill='white' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="styles.css?v=8">
+</head>
+<body class="is-loading">
+
+<!-- Preloader: greetings flash, then the panel lifts away with a curved edge -->
+<div class="loader" id="loader" aria-hidden="true">
+  <p class="loader-word"><span class="dot"></span><span id="loader-word">Hello</span></p>
+  <svg class="loader-curve" viewBox="0 0 1000 100" preserveAspectRatio="none"><path d="M0 0 Q500 100 1000 0 Z"/></svg>
+</div>
+
+<!-- Top navigation (sits over the hero) -->
+<nav class="topnav" aria-label="Main">
+  <a class="logo" href="#top" aria-label="Hosung Kim, back to top">
+    <span class="copy">©</span>
+    <span class="logo-roll"><span class="logo-a">Data by Hosung</span><span class="logo-b">Hosung Kim</span></span>
+  </a>
+  <ul>
+    <li><a class="navlink magnetic" href="#experience">Experience</a></li>
+    <li><a class="navlink magnetic" href="#projects">Projects</a></li>
+    <li><a class="navlink magnetic" href="#education">Education</a></li>
+    <li><a class="navlink magnetic" href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Floating menu button + slide-out panel (appears after the hero) -->
+<button class="menu-btn magnetic" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu-panel">
+  <span class="bars"></span>
+</button>
+<div class="menu-overlay" id="menu-overlay"></div>
+<aside class="menu-panel" id="menu-panel" aria-label="Site menu">
+  <svg class="menu-curve" viewBox="0 0 100 1000" preserveAspectRatio="none" aria-hidden="true"><path d="M100 0 Q-100 500 100 1000 Z"/></svg>
+  <div class="menu-inner">
+    <p class="eyebrow">Navigation</p>
+    <ul class="menu-links">
+      <li><a href="#top">Home</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#clubs">Clubs</a></li>
+      <li><a href="#service">Service</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <p class="eyebrow">Socials</p>
+    <ul class="menu-socials">
+      <li><a href="https://www.linkedin.com/in/hosungk" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="https://github.com/HosungKim48" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="assets/Hosung_Kim_Resume.pdf" target="_blank" rel="noopener">Résumé</a></li>
+    </ul>
+  </div>
+</aside>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <img class="hero-photo" src="assets/hosung-portrait.jpg" alt="Portrait of Hosung Kim" width="1400" height="1750" fetchpriority="high">
+
+    <div class="hero-pill">
+      <p>Based in<br>Los Angeles, CA</p>
+      <span class="globe" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><ellipse class="spin" cx="12" cy="12" rx="4" ry="10"/><path d="M2 12h20M4.5 6.5h15M4.5 17.5h15"/></svg>
+      </span>
+    </div>
+
+    <div class="hero-role">
+      <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 8v11H8"/></svg>
+      <p>People &amp; Business<br>Analytics</p>
+      <p class="sub">MSBA · USC Marshall ’27</p>
+    </div>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track" id="marquee">
+        <span>Hosung Kim —</span><span>Hosung Kim —</span><span>Hosung Kim —</span>
+      </div>
+    </div>
+    <h1 class="sr-only">Hosung Kim, people and business analytics</h1>
+  </header>
+
+  <!-- ============ INTRO ============ -->
+  <section class="intro wrap" aria-label="Introduction">
+    <p class="intro-lead reveal">Turning people and organization data into decisions teams can trust. Clean data, clear methods, honest results.</p>
+    <div class="intro-side reveal">
+      <p>I’m an MS Business Analytics candidate at USC Marshall (Dec 2027). I build documented datasets on how firms organize their leadership, and I’m starting my career in people analytics.</p>
+      <a class="circle-btn dark magnetic" href="assets/Hosung_Kim_Resume.pdf" target="_blank" rel="noopener">
+        <span class="fill"></span><span class="label">Résumé</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section class="experience wrap" id="experience" aria-labelledby="exp-title">
+    <div class="sec-head">
+      <h2 id="exp-title" class="eyebrow">Experience</h2>
+      <span class="eyebrow">Role · Dates</span>
+    </div>
+
+    <ul class="exp-list">
+
+      <li class="exp" data-preview="0">
+        <button class="exp-row" type="button" aria-expanded="false" aria-controls="exp-1">
+          <span class="exp-co">USC Marshall</span>
+          <span class="exp-meta"><span class="exp-role">Research Assistant</span><span class="exp-dates">2024 — Now</span></span>
+          <span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="exp-body" id="exp-1">
+          <div class="exp-inner">
+            <div class="li-head">
+              <div>
+                <p class="li-title">Research Assistant</p>
+                <p class="li-org">University of Southern California, Marshall School of Business</p>
+                <p class="li-dim"><span class="dur" data-start="2024-06" data-end="present">Jun 2024 – Present</span></p>
+                <p class="li-dim">Los Angeles, California, United States</p>
+              </div>
+            </div>
+            <ul class="li-bullets">
+              <li>Standardized 15,000+ firm-year records from SEC filings and commercial databases into a 30-year executive panel for a faculty research program on organization design, closing coverage gaps for 300+ executives.</li>
+              <li>Designed a reproducible AI-assisted audit workflow (NotebookLM + Python) that flags role-classification errors and cross-year inconsistencies before analysis, ahead of publication in <a href="https://sms.onlinelibrary.wiley.com/doi/10.1002/smj.70029" target="_blank" rel="noopener">Strategic Management Journal</a>.</li>
+              <li>Launched the <a href="https://organizationdesign.github.io/homepage/" target="_blank" rel="noopener">public database site</a> (612 firms, 216,018 observations) with a codebook, methods pages and usage guide, making the data usable by researchers with no part in collecting it.</li>
+            </ul>
+            <p class="li-skills"><strong>Skills:</strong> Python · Data standardization · Data validation · Research documentation · NotebookLM</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="exp" data-preview="1">
+        <button class="exp-row" type="button" aria-expanded="false" aria-controls="exp-2">
+          <span class="exp-co">Sellside Group</span>
+          <span class="exp-meta"><span class="exp-role">Junior M&amp;A Analyst</span><span class="exp-dates">Summer 2025</span></span>
+          <span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="exp-body" id="exp-2">
+          <div class="exp-inner">
+            <div class="li-head">
+              <div>
+                <p class="li-title">Junior M&amp;A Analyst</p>
+                <p class="li-org">Sellside Group</p>
+                <p class="li-dim"><span class="dur" data-start="2025-05" data-end="2025-08">May 2025 – Aug 2025</span></p>
+                <p class="li-dim">Dallas, Texas, United States</p>
+              </div>
+            </div>
+            <ul class="li-bullets">
+              <li>Presented deal rationale in 8 CEO meetings after running owner outreach for 3 lower-middle-market engagements (one buy-side, two sell-side) ahead of CIM delivery.</li>
+              <li>Built repeatable sourcing, screening and outreach workflows by designing a HubSpot screening rubric from client mandate criteria, narrowing 100+ companies to 5 qualified targets.</li>
+              <li>Wrote strategic-fit and competitive-dynamics assessments used in client CIMs by analyzing each business’s cost structure, customer concentration and supply-chain position.</li>
+            </ul>
+            <p class="li-skills"><strong>Skills:</strong> HubSpot CRM · Market screening · Business analysis · Client communication</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="exp" data-preview="2">
+        <button class="exp-row" type="button" aria-expanded="false" aria-controls="exp-3">
+          <span class="exp-co">eZar</span>
+          <span class="exp-meta"><span class="exp-role">Business Analyst Intern</span><span class="exp-dates">Spring 2024</span></span>
+          <span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="exp-body" id="exp-3">
+          <div class="exp-inner">
+            <div class="li-head">
+              <div>
+                <p class="li-title">Business Analyst Intern</p>
+                <p class="li-org">eZar · Internship</p>
+                <p class="li-dim"><span class="dur" data-start="2024-04" data-end="2024-07">Apr 2024 – Jul 2024</span></p>
+                <p class="li-dim">Seoul, South Korea · Hybrid</p>
+              </div>
+            </div>
+            <ul class="li-bullets">
+              <li>Built Python scripts that pulled selected financial metrics for a changing list of companies from external data APIs into the web platform, keeping client-facing data current without manual updates.</li>
+              <li>Reworked API requests to fetch only the fields the platform displayed, reducing data transferred and speeding up page loads for users.</li>
+              <li>Worked with the team to identify which financial metrics mattered most to investors, focusing data collection on the highest-priority figures.</li>
+            </ul>
+            <p class="li-skills"><strong>Skills:</strong> Python · REST APIs · Data pipelines · Automation</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="exp" data-preview="3">
+        <button class="exp-row" type="button" aria-expanded="false" aria-controls="exp-4">
+          <span class="exp-co">OneHealthLab</span>
+          <span class="exp-meta"><span class="exp-role">Statistical Analyst</span><span class="exp-dates">Spring 2024</span></span>
+          <span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="exp-body" id="exp-4">
+          <div class="exp-inner">
+            <div class="li-head">
+              <div>
+                <p class="li-title">Statistical Analyst</p>
+                <p class="li-org">OneHealthLab · Contract</p>
+                <p class="li-dim"><span class="dur" data-start="2024-05" data-end="2024-06">May 2024 – Jun 2024</span></p>
+                <p class="li-dim">Seoul, South Korea · Hybrid</p>
+              </div>
+            </div>
+            <ul class="li-bullets">
+              <li>Built an analysis-ready COVID-19 transmission network in R from raw case-level outbreak records, standardizing inconsistent records and resolving links between cases.</li>
+              <li>Applied statistical methods to find patterns in the transmission networks, verifying output accuracy for the research team.</li>
+              <li>Built data visualizations that contributed to a study published in <em>Emerging Infectious Diseases</em> (CDC), July 2025.</li>
+            </ul>
+            <p class="li-skills"><strong>Skills:</strong> R · Data cleaning · Network analysis · Data visualization</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <!-- Cursor-following preview (desktop only) -->
+    <div class="preview" id="preview" aria-hidden="true">
+      <div class="preview-slider" id="preview-slider">
+        <div class="pv pv-1"><span class="pv-k">Executive panel</span><span class="pv-n">15,000+</span><span class="pv-s">firm-year records standardized</span></div>
+        <div class="pv pv-2"><span class="pv-k">Deal sourcing</span><span class="pv-n">100+ → 5</span><span class="pv-s">companies screened to qualified targets</span></div>
+        <div class="pv pv-3"><span class="pv-k">Data pipelines</span><span class="pv-n">API → web</span><span class="pv-s">client data kept current, no manual pulls</span></div>
+        <div class="pv pv-4"><span class="pv-k">Published study</span><span class="pv-n">CDC · EID</span><span class="pv-s">visualizations for a 2025 journal article</span></div>
+      </div>
+      <span class="preview-cta">Open</span>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section class="projects wrap" id="projects" aria-labelledby="proj-title">
+    <div class="sec-head">
+      <h2 id="proj-title" class="eyebrow">Selected projects</h2>
+      <span class="eyebrow">2024 — 2026</span>
+    </div>
+
+    <div class="proj-grid">
+
+      <article class="proj reveal">
+        <a class="proj-panel" href="projects/fevs.html" aria-label="Read the training and retention case study">
+          <div class="mock mock-fevs" aria-hidden="true">
+            <p class="fv-k">Considering leaving within a year, by answer to “I receive the training I need” (2024)</p>
+            <div class="fv-chart">
+              <div class="fv-col"><b>72%</b><i style="--h:72%"></i><span>Strongly<br>disagree</span></div>
+              <div class="fv-col"><b>56%</b><i style="--h:56%"></i><span>Disagree</span></div>
+              <div class="fv-col"><b>45%</b><i style="--h:45%"></i><span>Neither</span></div>
+              <div class="fv-col"><b>32%</b><i style="--h:32%"></i><span>Agree</span></div>
+              <div class="fv-col"><b>23%</b><i style="--h:23%"></i><span>Strongly<br>agree</span></div>
+            </div>
+            <p class="fv-foot">Raw shares, no controls · OPM FEVS public data</p>
+          </div>
+        </a>
+        <div class="proj-text">
+          <h3>Training &amp; Retention in the Federal Workforce</h3>
+          <p class="proj-tag">People analytics · Personal project · Nov 2026</p>
+          <ul>
+            <li>Designed and directed a study of 15 years of OPM Federal Employee Viewpoint Survey data (1.65M responses, 29 agencies) asking whether employees who feel well trained are less likely to plan to leave. AI-assisted analysis in Python (DuckDB, statsmodels) through a reproducible pipeline.</li>
+            <li>Found the raw ~23-point gap in intent to leave shrinks to about 5 points after controlling for supervisor support, workload and tenure. Year-to-year rises in agency development scores weren’t followed by less leaving (p = 0.81), so feeling well trained flags retention risk but isn’t shown to be a lever on its own.</li>
+          </ul>
+          <a class="proj-link" href="projects/fevs.html">Read the case study <span aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+
+      <article class="proj reveal">
+        <a class="proj-panel" href="https://organizationdesign.github.io/homepage/" target="_blank" rel="noopener" aria-label="Open the Organization Design Database site">
+          <div class="mock mock-db" aria-hidden="true">
+            <div class="mock-bar"><i></i><i></i><i></i><span>organizationdesign.github.io</span></div>
+            <div class="db-title">Organization Design Database</div>
+            <div class="db-stats">
+              <div><b>612</b><span>S&amp;P 500 firms</span></div>
+              <div><b>216,018</b><span>executive-firm-years</span></div>
+              <div><b>1993–2024</b><span>coverage</span></div>
+            </div>
+            <div class="db-rows"><i></i><i></i><i></i><i></i></div>
+          </div>
+        </a>
+        <div class="proj-text">
+          <h3>Organization Design Database</h3>
+          <p class="proj-tag">Public research data · USC Marshall · 2024 — now</p>
+          <ul>
+            <li>Built the public site (Jekyll + GitHub Pages) for a hand-collected dataset on how S&amp;P 500 firms structure their top management, standardized into role categories that stay comparable over time.</li>
+            <li>Wrote the codebook, coverage and methods pages and how-to guide so outside researchers can use data they never helped collect. The dataset supports a paper in <em>Strategic Management Journal</em>.</li>
+          </ul>
+          <a class="proj-link" href="https://organizationdesign.github.io/homepage/" target="_blank" rel="noopener">Visit the site <span aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="proj-panel proj-video">
+          <video class="rt-video" controls muted loop playsinline preload="none" poster="assets/roundtable-poster.jpg" aria-label="Roundtable 60-second demo video">
+            <source src="assets/roundtable-demo.mp4" type="video/mp4">
+            <a href="assets/roundtable-demo.mp4">Watch the Roundtable demo video</a>
+          </video>
+        </div>
+        <div class="proj-text">
+          <h3>Roundtable</h3>
+          <p class="proj-tag">AI product · USC Marshall AI Case Competition semifinalist · Fall 2026</p>
+          <ul>
+            <li>Reached the semifinal of the 7th Annual AI Global Business Analytics Case Competition with a 7-person team by building Roundtable, a Discord bot (Python, Claude Code, Gemini) that helps MSBA teams decide together.</li>
+            <li>Scoped the MVP around private, anonymous decision rounds by mapping team-chat failures to root causes, keeping every decision in members’ hands, and verified the build with 577 automated tests.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="proj reveal">
+        <a class="proj-panel" href="projects/anua.html" aria-label="Read the Anua case study">
+          <div class="mock mock-anua" aria-hidden="true">
+            <p class="an-k">TikTok Shop GMV, 28 days (relative)</p>
+            <div class="an-bars">
+              <div class="an-bar comp"><i></i><span>Competitor<br><b>~20×</b></span></div>
+              <div class="an-bar brand"><i></i><span>Client<br><b>1×</b></span></div>
+            </div>
+            <div class="an-foot"><span><b>200</b> TikTok videos benchmarked</span><span><b>350</b> US consumers surveyed</span></div>
+          </div>
+        </a>
+        <div class="proj-text">
+          <h3>Anua × USC KOJOBS</h3>
+          <p class="proj-tag">Industry partnership · Consumer analytics · Fall 2025</p>
+          <ul>
+            <li>Led data collection and analysis for a 5-person consulting team, benchmarking 200 TikTok videos and surveying 350 US consumers; found a competitor drove ~20× the brand’s TikTok Shop GMV over 28 days.</li>
+            <li>Identified a pricing sweet spot through price-sensitivity analysis and won client adoption of the team’s pricing plan with recommendations on pricing, bundling and review accumulation.</li>
+          </ul>
+          <a class="proj-link" href="projects/anua.html">Read the case study <span aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ TOOLKIT (scroll-driven sliding rows) ============ -->
+  <section class="toolkit" aria-labelledby="tool-title">
+    <h2 id="tool-title" class="sr-only">Skills and tools</h2>
+    <div class="slide-row" data-dir="-1">
+      <span class="tile t-dark">Python</span><span class="tile">R</span><span class="tile t-blue">SQL · MySQL · PostgreSQL</span><span class="tile">Tableau</span><span class="tile t-dark">Power BI</span><span class="tile">Excel · XLOOKUP · Pivot Tables</span><span class="tile t-blue">Git</span><span class="tile">scikit-learn · XGBoost</span>
+    </div>
+    <div class="slide-row" data-dir="1">
+      <span class="tile">Regression</span><span class="tile t-dark">Quantile regression</span><span class="tile">ARIMA forecasting</span><span class="tile t-blue">Data validation &amp; audit</span><span class="tile">REST API pipelines</span><span class="tile t-dark">Claude Code</span><span class="tile">Lean Six Sigma</span><span class="tile t-blue">Agile / Scrum</span>
+    </div>
+  </section>
+
+  <!-- ============ EDUCATION & COURSES ============ -->
+  <section class="education wrap" id="education" aria-labelledby="edu-title">
+    <div class="sec-head">
+      <h2 id="edu-title" class="eyebrow">Education</h2>
+      <span class="eyebrow">2021 — 2027</span>
+    </div>
+
+    <div class="edu-card reveal">
+      <div class="edu-main">
+        <h3>University of Southern California</h3>
+        <p class="li-org">Marshall School of Business · Progressive Degree Program</p>
+        <p class="edu-deg">M.S. Business Analytics (STEM)<br>B.S. Business Administration, Business Analytics</p>
+        <p class="li-dim">Aug 2021 – Dec 2027 (expected) · Los Angeles, CA</p>
+      </div>
+      <dl class="edu-facts">
+        <div><dt>GPA</dt><dd>3.81</dd></div>
+        <div><dt>Dean’s List</dt><dd>6 semesters</dd></div>
+        <div><dt>Honors</dt><dd>Dean’s Scholarship · Alpha Lambda Delta</dd></div>
+      </dl>
+    </div>
+
+    <div class="courses">
+      <div class="course-col reveal">
+        <h3 class="col-title">Courses · Analytics &amp; data</h3>
+        <ul class="course-list">
+          <li><span class="code">DSO 445</span><span>Statistical Computing &amp; Data Visualization <em>(R, Python, Tableau)</em></span></li>
+          <li><span class="code">DSO 459</span><span>Business Analytics with Python</span></li>
+          <li><span class="code">DSO 464</span><span>Deep Learning for AI and Business</span></li>
+          <li><span class="code">BUAD 310</span><span>Applied Business Statistics</span></li>
+          <li><span class="code">ACAD 220</span><span>Introduction to Data Innovation</span></li>
+        </ul>
+        <h3 class="col-title">In progress · Fall 2026</h3>
+        <ul class="course-list">
+          <li><span class="code">DSO 510</span><span>Business Analytics</span></li>
+          <li><span class="code">DSO 552</span><span>SQL Databases for Business Analytics</span></li>
+          <li><span class="code">DSO 576</span><span>Algorithmic Thinking with Python</span></li>
+          <li><span class="code">DSO 424</span><span>Business Forecasting</span></li>
+          <li><span class="code">GSBA 545</span><span>Data-Driven Decision Making</span></li>
+          <li><span class="code">GSBA 542</span><span>Communication for Management</span></li>
+        </ul>
+      </div>
+      <div class="course-col reveal">
+        <h3 class="col-title">Courses · Business &amp; organizations</h3>
+        <ul class="course-list">
+          <li><span class="code">BUAD 304</span><span>Organizational Behavior and Leadership</span></li>
+          <li><span class="code">BUAD 311</span><span>Operations Management</span></li>
+          <li><span class="code">BUAD 497</span><span>Strategic Management</span></li>
+          <li><span class="code">BUAD 307</span><span>Marketing Fundamentals</span></li>
+          <li><span class="code">BUAD 308</span><span>Advanced Business Finance</span></li>
+          <li><span class="code">BUAD 302</span><span>Communication Strategy in Business</span></li>
+        </ul>
+        <h3 class="col-title">Certifications &amp; training</h3>
+        <ul class="course-list certs">
+          <li><span>Lean Six Sigma Green Belt</span></li>
+          <li><span>Scrum Master</span></li>
+          <li><span>Anthropic AI Fluency</span></li>
+          <li><span>Google Data Analytics · IBM Data Analytics</span></li>
+          <li><span>AI Product Boot Camp for Technical Professionals <em>(USC Marshall, Oct 2026)</em></span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLUBS ============ -->
+  <section class="clubs wrap" id="clubs" aria-labelledby="club-title">
+    <div class="sec-head">
+      <h2 id="club-title" class="eyebrow">Clubs</h2>
+      <span class="eyebrow">USC Marshall</span>
+    </div>
+    <ul class="club-list">
+      <li class="club reveal">
+        <span class="club-no">01</span>
+        <h3>Global Supply Chain Club</h3>
+        <p>Introduces students to supply chain management through networking, academic topics and hands-on problem-solving and analysis.</p>
+      </li>
+      <li class="club reveal">
+        <span class="club-no">02</span>
+        <h3>High Tech Association</h3>
+        <p>Prepares members for tech careers across product management, product marketing, strategy &amp; operations, finance and more, from big tech to start-ups.</p>
+      </li>
+      <li class="club reveal">
+        <span class="club-no">03</span>
+        <h3>Marshall Golf Club</h3>
+        <p>Brings Marshall students together through golf at every skill level, with networking and rounds across Los Angeles.</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============ MILITARY SERVICE ============ -->
+  <section class="service wrap" id="service" aria-labelledby="svc-title">
+    <div class="sec-head">
+      <h2 id="svc-title" class="eyebrow">Military service</h2>
+      <span class="eyebrow">2022 — 2023</span>
+    </div>
+    <div class="svc reveal">
+      <div class="svc-left">
+        <p class="svc-rank">Sergeant</p>
+        <h3>Republic of Korea Marine Corps</h3>
+        <p class="li-dim"><span class="dur" data-start="2022-05" data-end="2023-11">May 2022 – Nov 2023</span></p>
+        <p class="li-dim">Gimpo, South Korea · Future Operations team</p>
+      </div>
+      <div class="svc-right">
+        <ul class="li-bullets">
+          <li>Led 55 Marines on the Future Operations team through Ulchi Freedom Shield, the ROK–US combined exercise.</li>
+          <li>Interpreted Korean–English in real time between ROK and U.S. forces, bridging language and command structures.</li>
+        </ul>
+        <p class="li-skills"><strong>Skills:</strong> Leadership · Korean–English interpretation · Cross-cultural communication</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Curved edge that flattens as the dark footer scrolls in -->
+  <div class="curve-wrap" aria-hidden="true"><div class="curve" id="curve"></div></div>
+</main>
+
+<!-- ============ CONTACT ============ -->
+<footer class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-head">
+      <h2><img src="assets/hosung-avatar.jpg" alt="" width="96" height="96" class="avatar">Let’s work<br>together</h2>
+      <svg class="arrow contact-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5L5 19M5 8v11h11"/></svg>
+    </div>
+
+    <div class="contact-line">
+      <a class="circle-btn blue magnetic" href="#contact-form" id="touch-btn"><span class="fill"></span><span class="label">Get in touch</span></a>
+    </div>
+
+    <div class="pills">
+      <a class="pill magnetic" href="mailto:hosungk@marshall.usc.edu"><span class="fill"></span><span class="label">hosungk@marshall.usc.edu</span></a>
+      <a class="pill magnetic" href="https://www.linkedin.com/in/hosungk" target="_blank" rel="noopener"><span class="fill"></span><span class="label">linkedin.com/in/hosungk</span></a>
+    </div>
+
+    <form class="cform" id="contact-form" novalidate>
+      <p class="cform-intro">Or send a note here. It goes straight to my USC inbox.</p>
+      <div class="field">
+        <span class="num">01</span>
+        <label for="f-name">What’s your name?</label>
+        <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Jane Doe *" required>
+      </div>
+      <div class="field">
+        <span class="num">02</span>
+        <label for="f-email">What’s your email?</label>
+        <input id="f-email" name="email" type="email" autocomplete="email" placeholder="jane@company.com *" required>
+      </div>
+      <div class="field">
+        <span class="num">03</span>
+        <label for="f-org">What’s the name of your organization?</label>
+        <input id="f-org" name="organization" type="text" autocomplete="organization" placeholder="Company or team">
+      </div>
+      <div class="field">
+        <span class="num">04</span>
+        <label for="f-msg">Your message</label>
+        <textarea id="f-msg" name="message" rows="4" placeholder="Hello Hosung, I’d like to talk about… *" required></textarea>
+      </div>
+      <!-- Honeypot: bots fill this, people never see it -->
+      <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="cform-foot">
+        <p class="cform-status" id="form-status" role="status" aria-live="polite"></p>
+        <button class="circle-btn blue big magnetic" type="submit" id="send-btn"><span class="fill"></span><span class="label">Send it!</span></button>
+      </div>
+    </form>
+
+    <div class="footbar">
+      <div class="fb-col">
+        <span class="fb-k">Version</span><span>2026 © Edition</span>
+      </div>
+      <div class="fb-col">
+        <span class="fb-k">Local time</span><span id="clock">Los Angeles</span>
+      </div>
+      <div class="fb-col fb-socials">
+        <span class="fb-k">Socials</span>
+        <span><a href="https://www.linkedin.com/in/hosungk" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/HosungKim48" target="_blank" rel="noopener">GitHub</a><a href="assets/Hosung_Kim_Resume.pdf" target="_blank" rel="noopener">Résumé</a></span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js?v=4" defer></script>
+</body>
+</html>

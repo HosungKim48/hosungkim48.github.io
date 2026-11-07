@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Training &amp; Retention · Hosung Kim</title>
+<meta name="description" content="People analytics study: does getting the training you need keep federal employees from leaving? 15 years of OPM FEVS data, 1.65M responses, 29 agencies.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%231c1d20'/%3E%3Ctext x='32' y='42' font-family='Arial' font-size='28' fill='white' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="../styles.css?v=8">
+<link rel="stylesheet" href="../case.css?v=1">
+<style>
+/* page-specific charts */
+.vbars { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(8px, 1.4vw, 18px); height: 240px; align-items: end; border-bottom: 1px solid #d9dadd; margin-bottom: 52px; }
+.vcol { position: relative; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; }
+.vcol i { display: block; width: 100%; height: var(--h); background: var(--anua); border-radius: 3px 3px 0 0; }
+.vcol:nth-child(n+4) i { background: #9aa6f2; }
+.vcol b { font-size: 15px; font-weight: 500; margin-bottom: 6px; }
+.vcol span { position: absolute; top: calc(100% + 10px); font-size: 12px; line-height: 1.25; color: var(--muted); text-align: center; }
+
+.pair { display: grid; gap: 18px; }
+.pair-row { display: grid; grid-template-columns: 48px 1fr; gap: 12px; align-items: center; font-size: 14px; }
+.pair-bars { display: grid; gap: 6px; }
+.pb { display: grid; grid-template-columns: 1fr 64px; gap: 10px; align-items: center; }
+.pb .track { display: block; height: 18px; background: #e6e7ea; border-radius: 3px; overflow: hidden; }
+.pb .fill { display: block; height: 100%; width: var(--w); background: var(--anua); }
+.pb.fe .fill { background: #c9ccd3; }
+.pb .val { font-size: 13.5px; text-align: right; font-variant-numeric: tabular-nums; }
+
+.trend { width: 100%; height: auto; display: block; }
+.trend .grid { stroke: #e2e3e6; stroke-width: 1; }
+.trend .mark { stroke: #b9bcc3; stroke-dasharray: 3 4; }
+.trend .ax { font: 12px var(--sans); fill: var(--muted); }
+.trend .lab { font: 500 13px var(--sans); }
+.trend path { fill: none; stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+.trend .l-dev { stroke: var(--anua); } .trend .l-dev-dot { fill: var(--anua); } .trend .l-dev-t { fill: var(--anua); }
+.trend .l-need { stroke: #9aa6f2; stroke-dasharray: 5 4; } .trend .l-need-dot { fill: #9aa6f2; } .trend .l-need-t { fill: #6f7fe0; }
+.trend .l-leave { stroke: #1c1d20; } .trend .l-leave-dot { fill: #1c1d20; } .trend .l-leave-t { fill: #1c1d20; }
+
+.dots { display: grid; gap: 18px; position: relative; }
+.dot-row { display: grid; grid-template-columns: minmax(150px, 0.9fr) 2fr; gap: 16px; align-items: center; font-size: 14px; line-height: 1.35; }
+.dot-plot { position: relative; height: 46px; }
+.dot-plot::before { content: ""; position: absolute; top: 0; bottom: 0; left: var(--zero); width: 1px; background: #9a9ea6; }
+.ci { position: absolute; height: 3px; border-radius: 2px; left: var(--l); width: var(--wd); }
+.ci::after { content: ""; position: absolute; left: var(--p); top: 50%; width: 11px; height: 11px; border-radius: 50%; transform: translate(-50%, -50%); background: inherit; border: 2px solid var(--soft); }
+.ci em { position: absolute; left: calc(100% + 8px); top: 50%; transform: translateY(-50%); font-style: normal; font-size: 12.5px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.ci.lv { top: 12px; background: #1c1d20; }
+.ci.gs { top: 32px; background: var(--anua); }
+.dot-axis { display: grid; grid-template-columns: minmax(150px, 0.9fr) 2fr; gap: 16px; font-size: 11.5px; color: var(--muted); }
+.dot-axis div { position: relative; height: 16px; }
+.dot-axis span { position: absolute; transform: translateX(-50%); }
+
+.implic { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); }
+.implic div { padding: 28px clamp(0px, 2vw, 28px) 32px 0; border-bottom: 1px solid var(--line); }
+.implic div:nth-child(odd) { padding-right: clamp(20px, 3vw, 48px); }
+.implic b { display: block; font-size: 13px; color: var(--faint); font-weight: 400; margin-bottom: 14px; }
+.implic h3 { font-size: clamp(20px, 1.8vw, 26px); font-weight: 400; letter-spacing: -0.015em; line-height: 1.2; margin-bottom: 10px; }
+.implic p { font-size: 15.5px; line-height: 1.6; }
+
+@media (max-width: 900px) { .implic { grid-template-columns: 1fr; } .implic div:nth-child(odd) { padding-right: 0; } }
+@media (max-width: 520px) {
+  .dot-row, .dot-axis { grid-template-columns: 1fr; gap: 6px; }
+  .dot-axis div:first-child { display: none; }
+  .vcol span { font-size: 10.5px; }
+  .vcol b { font-size: 13px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="case-nav" id="case-nav" aria-label="Case study">
+  <a class="back" href="../index.html#projects"><svg viewBox="0 0 24 24" class="arrow" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Back to projects</a>
+  <ul>
+    <li><a href="#question">Question</a></li>
+    <li><a href="#employees">Employees</a></li>
+    <li><a href="#agencies">Agencies</a></li>
+    <li><a href="#meaning">For HR</a></li>
+    <li><a href="#role">My role</a></li>
+  </ul>
+</nav>
+
+<main>
+  <!-- ============ HERO ============ -->
+  <header class="case-hero wrap">
+    <span class="eyebrow">People analytics · Personal project · November 2026</span>
+    <h1>Does getting the training you need keep people from leaving?</h1>
+    <p class="lede">Organizations spend heavily on training but rarely know whether it keeps people. Using 15 years of the U.S. Federal Employee Viewpoint Survey, I asked whether employees who feel well trained are less likely to plan to leave, and whether agencies that improve on development see less leaving afterward.</p>
+    <dl class="facts">
+      <div><dt>Data</dt><dd>OPM FEVS public files, 2010–2024</dd></div>
+      <div><dt>Scale</dt><dd>1.65M responses · 29-agency panel</dd></div>
+      <div><dt>My role</dt><dd>Designed and directed; AI-assisted analysis</dd></div>
+      <div><dt>Tools</dt><dd>Python · DuckDB · statsmodels · matplotlib</dd></div>
+    </dl>
+  </header>
+
+  <!-- ============ KPI BAND ============ -->
+  <section class="kpis" aria-label="Key figures">
+    <div class="wrap kpi-row">
+      <div class="kpi"><b>72% vs 23%</b><span>considering leaving: strongly disagree vs strongly agree they get needed training (2024)</span></div>
+      <div class="kpi"><b>~5 pts</b><span>adjusted gap in intent to leave, stable across 2022–2024</span></div>
+      <div class="kpi"><b>0.0</b><span>change in next-year leaving after an agency’s development score rose (p = 0.81)</span></div>
+      <div class="kpi"><b>29</b><span>agencies tracked for 15 years, 387 agency-year pairs</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 01 QUESTION ============ -->
+  <section class="chapter wrap" id="question">
+    <div class="chapter-head reveal">
+      <div><span class="num">01</span><h2>The question and the data</h2></div>
+      <p>Training is usually judged by how people feel right after it, and research shows those reactions say little about learning. Data that links training to outcomes is almost always internal to companies. FEVS is the largest public alternative: several hundred thousand federal employees a year, asked about training, development, their supervisors and whether they plan to leave.</p>
+    </div>
+    <div class="grid3">
+      <article class="card reveal">
+        <h3>Training (employees)</h3>
+        <p>Agreement with <em>“I receive the training I need to do my job well.”</em> This is <strong>perceived training adequacy</strong>: how trained people feel, not tested skill. In 2024, 67% answered positively (n = 666,259).</p>
+      </article>
+      <article class="card reveal">
+        <h3>Development (agencies)</h3>
+        <p>The training item starts in 2022, too late for a 15-year panel. Agencies are tracked on <em>“I am given a real opportunity to improve my skills,”</em> asked every year. The two move together across agencies (r = 0.71–0.85).</p>
+      </article>
+      <article class="card reveal">
+        <h3>Outcome</h3>
+        <p><em>“Are you considering leaving your organization within the next year?”</em> Any “yes” counts. This is <strong>intent</strong>, not actual departures, and every result is an association, not proof of cause.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ 02 EMPLOYEES ============ -->
+  <section class="chapter wrap" id="employees">
+    <div class="chapter-head reveal">
+      <div><span class="num">02</span><h2>Feeling well trained goes with staying, but less than it first looks</h2></div>
+      <p>The raw pattern is steep. But people who feel good about their job tend to rate everything higher, so I compared employees in the same agency who also rated their supervisor’s support, recognition, workload and pay alike. The gap shrinks from about 23 points to about 5, and I headline the cautious number.</p>
+    </div>
+
+    <div class="grid2">
+      <article class="card reveal">
+        <h3>Share considering leaving, by answer to “I receive the training I need”</h3>
+        <div class="vbars">
+          <div class="vcol"><b>72%</b><i style="--h:72%"></i><span>Strongly<br>disagree</span></div>
+          <div class="vcol"><b>56%</b><i style="--h:56%"></i><span>Disagree</span></div>
+          <div class="vcol"><b>45%</b><i style="--h:45%"></i><span>Neither</span></div>
+          <div class="vcol"><b>32%</b><i style="--h:32%"></i><span>Agree</span></div>
+          <div class="vcol"><b>23%</b><i style="--h:23%"></i><span>Strongly<br>agree</span></div>
+        </div>
+        <p class="take">Each step up the scale goes with fewer people thinking about leaving. 2022 and 2023 differ from 2024 by at most 2.3 points at any answer.</p>
+        <p class="src">2024, survey-weighted shares, no controls</p>
+      </article>
+
+      <article class="card reveal">
+        <h3>The gap, measured two ways (percentage points)</h3>
+        <div class="legend"><span><i style="background:#c9ccd3"></i>Same agency only</span><span><i style="background:var(--anua)"></i>Fully adjusted</span></div>
+        <div class="pair">
+          <div class="pair-row"><span>2022</span><div class="pair-bars"><div class="pb fe"><span class="track"><span class="fill" style="--w:100%"></span></span><span class="val">−24</span></div><div class="pb"><span class="track"><span class="fill" style="--w:24.2%"></span></span><span class="val">−5.8</span></div></div></div>
+          <div class="pair-row"><span>2023</span><div class="pair-bars"><div class="pb fe"><span class="track"><span class="fill" style="--w:95.8%"></span></span><span class="val">−23</span></div><div class="pb"><span class="track"><span class="fill" style="--w:20.8%"></span></span><span class="val">−5.0</span></div></div></div>
+          <div class="pair-row"><span>2024</span><div class="pair-bars"><div class="pb fe"><span class="track"><span class="fill" style="--w:95.8%"></span></span><span class="val">−23</span></div><div class="pb"><span class="track"><span class="fill" style="--w:21.7%"></span></span><span class="val">−5.2</span></div></div></div>
+        </div>
+        <p class="take">Fully adjusted for supervisor support, recognition, workload, pay, tenure, supervisory status and age: <strong>−5.2 points in 2024</strong> (95% CI −5.8 to −4.7). The true link likely sits between 5 and 23 points; the defensible claim is the lower one.</p>
+        <p class="src">Survey-weighted logistic regression, agency fixed effects, average marginal effects; SEs clustered by agency</p>
+      </article>
+
+      <article class="card reveal">
+        <h3>Who it matters for: adjusted gap by years of service (2024)</h3>
+        <div class="legend"><span><i style="background:var(--anua)"></i>Any reason for leaving</span><span><i style="background:#9aa6f2"></i>Leaving for another job</span></div>
+        <div class="pair">
+          <div class="pair-row" style="grid-template-columns:96px 1fr"><span>10 or fewer</span><div class="pair-bars"><div class="pb"><span class="track"><span class="fill" style="--w:100%"></span></span><span class="val">−7.3</span></div><div class="pb"><span class="track"><span class="fill" style="--w:75.3%;background:#9aa6f2"></span></span><span class="val">−5.5</span></div></div></div>
+          <div class="pair-row" style="grid-template-columns:96px 1fr"><span>11–20 years</span><div class="pair-bars"><div class="pb"><span class="track"><span class="fill" style="--w:72.6%"></span></span><span class="val">−5.3</span></div><div class="pb"><span class="track"><span class="fill" style="--w:67.1%;background:#9aa6f2"></span></span><span class="val">−4.9</span></div></div></div>
+          <div class="pair-row" style="grid-template-columns:96px 1fr"><span>Over 20</span><div class="pair-bars"><div class="pb"><span class="track"><span class="fill" style="--w:6.8%"></span></span><span class="val">−0.5</span></div><div class="pb"><span class="track"><span class="fill" style="--w:52.1%;background:#9aa6f2"></span></span><span class="val">−3.8</span></div></div></div>
+        </div>
+        <p class="take">The link is concentrated among staff in their first 20 years. For veterans it nearly vanishes, partly because many are leaving to retire; counting only job-switching, their gap reappears (−3.8).</p>
+      </article>
+
+      <article class="card reveal">
+        <h3>Where people would go</h3>
+        <div class="hbars">
+          <div class="hbar"><span>Another federal job</span><span class="track"><span class="fill" style="--w:100%"></span></span><span class="val">−4.7</span></div>
+          <div class="hbar"><span>Other reasons</span><span class="track"><span class="fill" style="--w:55.3%"></span></span><span class="val">−2.6</span></div>
+          <div class="hbar"><span>Job outside government</span><span class="track"><span class="fill" style="--w:31.9%"></span></span><span class="val">−1.5</span></div>
+        </div>
+        <p class="take">The gap is largest for moving to another federal job, which suggests internal mobility, not only exit, is at stake. The result barely moves without survey weights, with complete demographics only, or for employees under 40.</p>
+        <p class="src">Adjusted gap in percentage points, 2024, each reason vs not considering leaving</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ 03 AGENCIES ============ -->
+  <section class="chapter wrap" id="agencies">
+    <div class="chapter-head reveal">
+      <div><span class="num">03</span><h2>Agencies that improved on development didn’t see less leaving</h2></div>
+      <p>Agencies with better development climates do have lower leaving (r = −0.45 across 15-year averages). But that could just mean some agencies are better places to work for years at a time. So I compared each agency with itself and asked whether a <em>rise</em> in its score came before a <em>fall</em> in leaving.</p>
+    </div>
+
+    <div class="grid2">
+      <article class="card reveal">
+        <h3>Government-wide, 2010–2024</h3>
+        <div class="legend"><span><i style="background:var(--anua)"></i>Development score</span><span><i style="background:#9aa6f2"></i>“Training I need” (from 2022)</span><span><i style="background:#1c1d20"></i>Considering leaving</span></div>
+        <svg class="trend" viewBox="0 0 664 290" role="img" aria-label="Government-wide development score rose from 66% to 72% and intent to leave rose from 29% to 37% between 2010 and 2024">
+<line x1="48" x2="612" y1="227.0" y2="227.0" class="grid"/><text x="40" y="231.0" class="ax" text-anchor="end">30%</text>
+<line x1="48" x2="612" y1="181.0" y2="181.0" class="grid"/><text x="40" y="185.0" class="ax" text-anchor="end">40%</text>
+<line x1="48" x2="612" y1="135.0" y2="135.0" class="grid"/><text x="40" y="139.0" class="ax" text-anchor="end">50%</text>
+<line x1="48" x2="612" y1="89.0" y2="89.0" class="grid"/><text x="40" y="93.0" class="ax" text-anchor="end">60%</text>
+<line x1="48" x2="612" y1="43.0" y2="43.0" class="grid"/><text x="40" y="47.0" class="ax" text-anchor="end">70%</text>
+<text x="48.0" y="272" class="ax" text-anchor="middle">2010</text>
+<text x="128.6" y="272" class="ax" text-anchor="middle">2012</text>
+<text x="209.1" y="272" class="ax" text-anchor="middle">2014</text>
+<text x="289.7" y="272" class="ax" text-anchor="middle">2016</text>
+<text x="370.3" y="272" class="ax" text-anchor="middle">2018</text>
+<text x="450.9" y="272" class="ax" text-anchor="middle">2020</text>
+<text x="531.4" y="272" class="ax" text-anchor="middle">2022</text>
+<text x="612.0" y="272" class="ax" text-anchor="middle">2024</text>
+<line x1="450.9" x2="450.9" y1="20" y2="250" class="mark"/><text x="455.9" y="30" class="ax">2020 (COVID)</text>
+<path d="M48.0 61.9 L88.3 65.6 L128.6 74.5 L168.9 90.3 L209.1 93.3 L249.4 83.2 L289.7 77.0 L330.0 70.1 L370.3 62.1 L410.6 55.7 L450.9 43.3 L491.1 51.2 L531.4 52.0 L571.7 41.5 L612.0 32.8" class="l-dev"/>
+<circle cx="612.0" cy="32.8" r="3.5" class="l-dev-dot"/><text x="620.0" y="36.8" class="lab l-dev-t">72%</text>
+<circle cx="48.0" cy="61.9" r="3.5" class="l-dev-dot"/><text x="54.0" y="52.9" class="lab l-dev-t">66%</text>
+<path d="M531.4 67.4 L571.7 62.0 L612.0 58.1" class="l-need"/>
+<circle cx="612.0" cy="58.1" r="3.5" class="l-need-dot"/><text x="620.0" y="62.1" class="lab l-need-t">67%</text>
+<path d="M48.0 231.1 L88.3 227.4 L128.6 219.0 L168.9 211.9 L209.1 201.3 L249.4 203.3 L289.7 203.5 L330.0 209.4 L370.3 205.4 L410.6 203.6 L450.9 212.9 L491.1 188.9 L531.4 189.3 L571.7 192.5 L612.0 195.5" class="l-leave"/>
+<circle cx="612.0" cy="195.5" r="3.5" class="l-leave-dot"/><text x="620.0" y="199.5" class="lab l-leave-t">37%</text>
+<circle cx="48.0" cy="231.1" r="3.5" class="l-leave-dot"/><text x="54.0" y="222.1" class="lab l-leave-t">29%</text>
+</svg>
+        <p class="take">Both development scores and intent to leave rose over the period. National swings (pay freezes, shutdowns, the pandemic) are why the agency tests remove each year’s government-wide change.</p>
+        <p class="src">246,846 to 686,499 respondents a year, survey-weighted</p>
+      </article>
+
+      <article class="card reveal">
+        <h3>Four agency tests, per typical difference in the development score</h3>
+        <div class="legend"><span><i style="background:#1c1d20"></i>Next year’s intent to leave</span><span><i style="background:var(--anua)"></i>Next year’s Global Satisfaction</span></div>
+        <div class="dots" style="--zero:41.667%">
+          <div class="dot-row"><span>Score this year → outcome next year</span><div class="dot-plot"><span class="ci lv" style="--l:4.33%;--wd:18.67%;--p:50%"><em>−1.7</em></span><span class="ci gs" style="--l:80.67%;--wd:18.83%;--p:49.6%"><em style="left:auto;right:calc(100% + 8px)">+2.9</em></span></div></div>
+          <div class="dot-row"><span>Same, holding next year’s score constant</span><div class="dot-plot"><span class="ci lv" style="--l:28.83%;--wd:16.83%;--p:50.5%"><em>−0.3</em></span><span class="ci gs" style="--l:44.33%;--wd:15.33%;--p:50%"><em>+0.6</em></span></div></div>
+          <div class="dot-row"><span>Change in score → next year’s change</span><div class="dot-plot"><span class="ci lv" style="--l:36.33%;--wd:9.5%;--p:49.1%"><em>0.0</em></span><span class="ci gs" style="--l:46.5%;--wd:8.83%;--p:50.9%"><em>+0.6</em></span></div></div>
+          <div class="dot-row"><span>Same, plus each agency’s own trend</span><div class="dot-plot"><span class="ci lv" style="--l:37.67%;--wd:9.67%;--p:50%"><em>0.0</em></span><span class="ci gs" style="--l:43.5%;--wd:9.83%;--p:49.2%"><em>+0.4</em></span></div></div>
+          <div class="dot-axis"><div></div><div><span style="left:8.33%">−2</span><span style="left:25%">−1</span><span style="left:41.667%">0</span><span style="left:58.33%">+1</span><span style="left:75%">+2</span><span style="left:91.67%">+3</span></div></div>
+        </div>
+        <p class="take">A rise in an agency’s development score was <strong>not</strong> followed by less leaving (−0.02 per point, 95% CI −0.15 to 0.11, bootstrap p = 0.81), a precise null: at most about 0.3 points either way. It was followed by slightly higher satisfaction (bootstrap p = 0.004), a smaller, same-survey finding.</p>
+        <p class="src">29 agencies, agency and year fixed effects; bars are 95% intervals; wild cluster bootstrap (9,999 draws)</p>
+      </article>
+    </div>
+
+    <div class="grid3" style="margin-top:clamp(20px,3vw,40px)">
+      <article class="card reveal"><h3>Reverse direction</h3><p>High leaving this year predicts a <em>lower</em> development score next year just as strongly (−0.58 vs −0.48), so the year-ahead pattern can’t show which comes first.</p></article>
+      <article class="card reveal"><h3>Horse race</h3><p>Once next year’s score is known, this year’s score adds nothing detectable to predicting next year’s leaving (−0.08, CI −0.22 to 0.07).</p></article>
+      <article class="card reveal"><h3>Changes on changes</h3><p>An agency’s rise in score doesn’t predict a fall in leaving the next year, with or without each agency’s own long-run trend, and without small agencies.</p></article>
+    </div>
+  </section>
+
+  <!-- ============ 04 MEANING ============ -->
+  <section class="chapter wrap" id="meaning">
+    <div class="chapter-head reveal">
+      <div><span class="num">04</span><h2>What this means for HR leaders</h2></div>
+      <p>Employees’ sense of being well trained is a useful warning signal for retention risk, especially among newer staff. On this evidence, raising that score is not a lever that lowers turnover intent on its own.</p>
+    </div>
+    <div class="implic reveal">
+      <div><b>01</b><h3>A signal, not a lever</h3><p>Use perceived training adequacy to flag where retention risk is building, not as a promise that a new program will cut attrition.</p></div>
+      <div><b>02</b><h3>Target the first 20 years</h3><p>The link is strongest for newer and mid-career staff, and for people weighing another job in the same sector: internal mobility is at stake.</p></div>
+      <div><b>03</b><h3>Don’t promise turnover cuts from a survey score</h3><p>Agencies whose development scores rose saw slightly higher satisfaction, not lower intent to leave.</p></div>
+      <div><b>04</b><h3>Measure what training builds</h3><p>Test skill before, right after and 3–6 months after training, roll programs out in stages so later groups act as a comparison, and link training records to real separations, moves and promotions.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ MY ROLE ============ -->
+  <section class="wrap" id="role" style="padding-top:clamp(80px,10vw,150px)">
+    <div class="role reveal">
+      <h2>My role</h2>
+      <div>
+        <ul class="li-bullets">
+          <li>Chose the question, wrote the research proposal and made the calls that shape what the report claims: which survey questions to use, how to treat the 2020 COVID survey year, headlining the conservative estimate, and leading with the null result.</li>
+          <li>Directed Claude Code (an AI coding agent), which wrote and ran the data pipeline, the models and the first draft of the report; I reviewed and approved each of four milestones, with every decision and its reason logged.</li>
+          <li>The project is fully reproducible: six numbered scripts rebuild everything from OPM’s public files, the report is filled from a template so no number is typed by hand, and the pipeline reproduces OPM’s published 2024 figures for 4 agencies to within 0.5 points.</li>
+        </ul>
+        <p class="li-skills"><strong>Methods:</strong> Survey-weighted logistic regression · average marginal effects · fixed-effects panels · first differences · wild cluster bootstrap · robustness and reverse-causality checks</p>
+        <a class="proj-link" href="https://claude.ai/artifact/2XwUckbeLD79XqZ2cxtaZX" target="_blank" rel="noopener">Full report with appendix <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <p class="method">Limits: the predictor is perceived, not measured, training; training and intent come from the same survey and person, so results are associations; intent to leave is not turnover; no person is followed over time; the agency panel uses a development item rather than the training item; these are federal employees, and private-sector patterns may differ. Data: U.S. Office of Personnel Management, Federal Employee Viewpoint Survey public release files, 2010–2024 (2026 re-releases).</p>
+  </section>
+</main>
+
+<footer class="case-foot">
+  <div class="wrap">
+    <h2>More projects<br>&amp; how to reach me</h2>
+    <div class="pills">
+      <a class="pill" href="../index.html#projects"><span class="fill"></span><span class="label">← All projects</span></a>
+      <a class="pill" href="../index.html#contact"><span class="fill"></span><span class="label">Get in touch</span></a>
+      <a class="pill" href="https://www.linkedin.com/in/hosungk" target="_blank" rel="noopener"><span class="fill"></span><span class="label">LinkedIn</span></a>
+    </div>
+    <div class="footbar">
+      <div class="fb-col"><span class="fb-k">Version</span><span>2026 © Edition</span></div>
+      <div class="fb-col"><span class="fb-k">Project</span><span>FEVS training &amp; retention · Nov 2026</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  document.documentElement.classList.add('js');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const nav = document.getElementById('case-nav');
+  const onScroll = () => nav.classList.toggle('scrolled', scrollY > 8);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  const els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !reduce) {
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+    els.forEach((el) => io.observe(el));
+  } else { els.forEach((el) => el.classList.add('in')); }
+})();
+</script>
+</body>
+</html>
