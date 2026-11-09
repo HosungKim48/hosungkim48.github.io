@@ -17,7 +17,9 @@
   };
   let seen = false;
   try { seen = sessionStorage.getItem('hk-loaded') === '1'; sessionStorage.setItem('hk-loaded', '1'); } catch (e) { /* storage blocked */ }
-  if (reduce || seen) {
+  if (!loader) {
+    document.body.classList.remove('is-loading'); // pages without the preloader
+  } else if (reduce || seen) {
     loader.style.display = 'none';
     document.body.classList.remove('is-loading');
   } else {
@@ -54,7 +56,7 @@
       clock.textContent = new Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'America/Los_Angeles', timeZoneName: 'short' }).format(new Date());
     } catch (e) { clock.textContent = 'Los Angeles'; }
   };
-  tick(); setInterval(tick, 30000);
+  if (clock) { tick(); setInterval(tick, 30000); }
 
   /* ---------- Menu ---------- */
   const menuBtn = document.getElementById('menu-btn');
@@ -68,10 +70,12 @@
     menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     if (open) menuBtn.classList.add('visible');
   };
-  menuBtn.addEventListener('click', () => setMenu(!panel.classList.contains('open')));
-  overlay.addEventListener('click', () => setMenu(false));
-  panel.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener('click', () => setMenu(false)));
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+  if (menuBtn && panel && overlay) {
+    menuBtn.addEventListener('click', () => setMenu(!panel.classList.contains('open')));
+    overlay.addEventListener('click', () => setMenu(false));
+    panel.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+  }
 
   /* ---------- Magnetic buttons ---------- */
   if (finePointer && !reduce) {
@@ -148,33 +152,37 @@
     lastY = y;
 
     // Floating menu button after the hero
-    if (!isNarrow()) menuBtn.classList.toggle('visible', y > hero.offsetHeight * 0.75 || panel.classList.contains('open'));
+    if (menuBtn && hero && !isNarrow()) menuBtn.classList.toggle('visible', y > hero.offsetHeight * 0.75 || panel.classList.contains('open'));
 
     if (reduce) return;
 
     // Toolkit rows slide in opposite directions as the section crosses the viewport
-    const r = toolkit.getBoundingClientRect();
-    const p = clamp((window.innerHeight - r.top) / (window.innerHeight + r.height), 0, 1);
-    rows.forEach((row) => {
-      const range = Math.max(0, row.scrollWidth - window.innerWidth) * 0.5 + 120;
-      const d = Number(row.dataset.dir);
-      const x = d < 0 ? -p * range : (p - 1) * range;
-      row.style.transform = `translate3d(${x}px, 0, 0)`;
-    });
+    if (toolkit) {
+      const r = toolkit.getBoundingClientRect();
+      const p = clamp((window.innerHeight - r.top) / (window.innerHeight + r.height), 0, 1);
+      rows.forEach((row) => {
+        const range = Math.max(0, row.scrollWidth - window.innerWidth) * 0.5 + 120;
+        const d = Number(row.dataset.dir);
+        const x = d < 0 ? -p * range : (p - 1) * range;
+        row.style.transform = `translate3d(${x}px, 0, 0)`;
+      });
+    }
 
     // Curve above the footer flattens as the footer comes in
-    const c = contact.getBoundingClientRect();
-    const cp = clamp((window.innerHeight - c.top) / (window.innerHeight * 0.9), 0, 1);
-    const h = 120 * (1 - cp);
-    curve.style.height = `${h}px`;
-    curve.style.top = `${-h / 2}px`;
+    if (curve && contact) {
+      const c = contact.getBoundingClientRect();
+      const cp = clamp((window.innerHeight - c.top) / (window.innerHeight * 0.9), 0, 1);
+      const h = 120 * (1 - cp);
+      curve.style.height = `${h}px`;
+      curve.style.top = `${-h / 2}px`;
+    }
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
   onScroll();
 
   // Name marquee: continuous drift; direction follows scroll
-  if (!reduce) {
+  if (!reduce && marquee) {
     const loop = () => {
       const span = marquee.firstElementChild;
       const w = span ? span.offsetWidth : 1;
@@ -185,6 +193,13 @@
       requestAnimationFrame(loop);
     };
     requestAnimationFrame(loop);
+  }
+
+  /* ---------- Sticky page nav on the separate pages: hairline once scrolled ---------- */
+  const caseNav = document.getElementById('case-nav');
+  if (caseNav) {
+    const navLine = () => caseNav.classList.toggle('scrolled', window.scrollY > 8);
+    window.addEventListener('scroll', navLine, { passive: true }); navLine();
   }
 
   /* ---------- Reveal on scroll ---------- */
@@ -218,7 +233,8 @@
   const status = document.getElementById('form-status');
   const sendBtn = document.getElementById('send-btn');
 
-  document.getElementById('touch-btn').addEventListener('click', (e) => {
+  const touchBtn = document.getElementById('touch-btn');
+  if (form && touchBtn) touchBtn.addEventListener('click', (e) => {
     e.preventDefault();
     form.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
     setTimeout(() => document.getElementById('f-name').focus({ preventScroll: true }), reduce ? 0 : 700);
@@ -230,7 +246,7 @@
   };
   const setStatus = (html, cls) => { status.className = `cform-status ${cls || ''}`; status.innerHTML = html; };
 
-  form.addEventListener('submit', async (e) => {
+  if (form) form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const fd = new FormData(form);
     const d = Object.fromEntries(['name', 'email', 'organization', 'message', '_honey'].map((k) => [k, String(fd.get(k) || '').trim()]));
@@ -243,9 +259,9 @@
     if (!d.name) mark('f-name');
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) mark('f-email');
     if (!d.message) mark('f-msg');
-    if (bad) { setStatus('Please fill in your name, a valid email and a message.', 'err'); bad.focus(); return; }
+    if (bad) { setStatus('Please provide your name, a valid email address and a message.', 'err'); bad.focus(); return; }
 
-    const fallback = () => setStatus(`Couldn’t send from the page. <a href="${mailtoFor(d)}">Open it in your email app instead</a>, or write to ${TO}.`, 'err');
+    const fallback = () => setStatus(`The message could not be sent from this page. Please <a href="${mailtoFor(d)}">open it in your email application</a>, or write directly to ${TO}.`, 'err');
 
     if (location.protocol === 'file:') { fallback(); return; } // relay needs a hosted page
 
@@ -268,7 +284,7 @@
       const json = await res.json().catch(() => ({}));
       if (res.ok && String(json.success) === 'true') {
         form.reset();
-        setStatus(`Thanks, ${d.name.split(' ')[0]}! Your message is on its way. I’ll reply to ${d.email}.`, 'ok');
+        setStatus(`Thank you, ${d.name.split(' ')[0]}. Your message has been sent, and I will reply to ${d.email}.`, 'ok');
       } else {
         fallback();
       }

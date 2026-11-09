@@ -113,3 +113,13 @@
   .heat { font-size: 12px; border-spacing: 2px; }
   .checks td:not(:first-child), .checks th:not(:first-child) { width: 64px; }
 }
+
+/* Site-wide nav on the separate pages (Experience, Projects, Education, Journey) */
+.case-nav .brand { font-size: 15px; font-weight: 500; }
+.case-nav ul a[aria-current="page"] { color: var(--ink); }
+@media (max-width: 900px) {
+  .case-nav.site { flex-wrap: wrap; row-gap: 12px; }
+  .case-nav.site ul { display: flex; width: 100%; gap: 14px; overflow-x: auto; scrollbar-width: none; }
+  .case-nav.site ul::-webkit-scrollbar { display: none; }
+  .case-nav.site ul a { white-space: nowrap; font-size: 13.5px; }
+}

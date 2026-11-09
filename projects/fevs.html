@@ -5,12 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Training &amp; Retention · Hosung Kim</title>
 <meta name="description" content="People analytics study: does getting the training you need keep federal employees from leaving? 15 years of OPM FEVS data, 1.65M responses, 29 agencies.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Training &amp; Retention in the Federal Workforce · Hosung Kim">
+<meta property="og:description" content="People analytics study: does getting the training you need keep federal employees from leaving? 15 years of OPM FEVS data, 1.65M responses, 29 agencies.">
+<meta property="og:url" content="https://hosungkim48.github.io/projects/fevs.html">
+<meta property="og:image" content="https://hosungkim48.github.io/assets/hosung-portrait.jpg">
+<meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%231c1d20'/%3E%3Ctext x='32' y='42' font-family='Arial' font-size='28' fill='white' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&display=swap">
-<link rel="stylesheet" href="../styles.css?v=8">
-<link rel="stylesheet" href="../case.css?v=1">
+<link rel="stylesheet" href="../styles.css?v=11">
+<link rel="stylesheet" href="../case.css?v=3">
 <style>
 /* page-specific charts */
 .vbars { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(8px, 1.4vw, 18px); height: 240px; align-items: end; border-bottom: 1px solid #d9dadd; margin-bottom: 52px; }
@@ -71,7 +77,7 @@
 <body>
 
 <nav class="case-nav" id="case-nav" aria-label="Case study">
-  <a class="back" href="../index.html#projects"><svg viewBox="0 0 24 24" class="arrow" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Back to projects</a>
+  <a class="back" href="../projects.html"><svg viewBox="0 0 24 24" class="arrow" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Back to projects</a>
   <ul>
     <li><a href="#question">Question</a></li>
     <li><a href="#employees">Employees</a></li>
@@ -130,8 +136,8 @@
   <!-- ============ 02 EMPLOYEES ============ -->
   <section class="chapter wrap" id="employees">
     <div class="chapter-head reveal">
-      <div><span class="num">02</span><h2>Feeling well trained goes with staying, but less than it first looks</h2></div>
-      <p>The raw pattern is steep. But people who feel good about their job tend to rate everything higher, so I compared employees in the same agency who also rated their supervisor’s support, recognition, workload and pay alike. The gap shrinks from about 23 points to about 5, and I headline the cautious number.</p>
+      <div><span class="num">02</span><h2>Feeling well trained is associated with staying, though less strongly than it first appears</h2></div>
+      <p>The raw pattern is steep. However, people who feel positive about their work tend to rate everything higher, so I compared employees in the same agency who also rated their supervisor’s support, recognition, workload and pay alike. The gap narrows from about 23 points to about 5, and I report the more conservative figure.</p>
     </div>
 
     <div class="grid2">
@@ -161,7 +167,7 @@
       </article>
 
       <article class="card reveal">
-        <h3>Who it matters for: adjusted gap by years of service (2024)</h3>
+        <h3>Where it matters most: adjusted gap by years of service (2024)</h3>
         <div class="legend"><span><i style="background:var(--anua)"></i>Any reason for leaving</span><span><i style="background:#9aa6f2"></i>Leaving for another job</span></div>
         <div class="pair">
           <div class="pair-row" style="grid-template-columns:96px 1fr"><span>10 or fewer</span><div class="pair-bars"><div class="pb"><span class="track"><span class="fill" style="--w:100%"></span></span><span class="val">−7.3</span></div><div class="pb"><span class="track"><span class="fill" style="--w:75.3%;background:#9aa6f2"></span></span><span class="val">−5.5</span></div></div></div>
@@ -172,13 +178,13 @@
       </article>
 
       <article class="card reveal">
-        <h3>Where people would go</h3>
+        <h3>Where those considering leaving would go</h3>
         <div class="hbars">
           <div class="hbar"><span>Another federal job</span><span class="track"><span class="fill" style="--w:100%"></span></span><span class="val">−4.7</span></div>
           <div class="hbar"><span>Other reasons</span><span class="track"><span class="fill" style="--w:55.3%"></span></span><span class="val">−2.6</span></div>
           <div class="hbar"><span>Job outside government</span><span class="track"><span class="fill" style="--w:31.9%"></span></span><span class="val">−1.5</span></div>
         </div>
-        <p class="take">The gap is largest for moving to another federal job, which suggests internal mobility, not only exit, is at stake. The result barely moves without survey weights, with complete demographics only, or for employees under 40.</p>
+        <p class="take">The gap is largest for moving to another federal job, which suggests internal mobility, not only exit, is at stake. The result changes little without survey weights, with complete demographics only, or for employees under 40.</p>
         <p class="src">Adjusted gap in percentage points, 2024, each reason vs not considering leaving</p>
       </article>
     </div>
@@ -187,8 +193,8 @@
   <!-- ============ 03 AGENCIES ============ -->
   <section class="chapter wrap" id="agencies">
     <div class="chapter-head reveal">
-      <div><span class="num">03</span><h2>Agencies that improved on development didn’t see less leaving</h2></div>
-      <p>Agencies with better development climates do have lower leaving (r = −0.45 across 15-year averages). But that could just mean some agencies are better places to work for years at a time. So I compared each agency with itself and asked whether a <em>rise</em> in its score came before a <em>fall</em> in leaving.</p>
+      <div><span class="num">03</span><h2>Agencies that improved on development did not see less leaving</h2></div>
+      <p>Agencies with better development climates do have lower leaving (r = −0.45 across 15-year averages). However, this may simply reflect that some agencies are better places to work for years at a time. I therefore compared each agency with itself and asked whether a <em>rise</em> in its score came before a <em>fall</em> in leaving.</p>
     </div>
 
     <div class="grid2">
@@ -239,9 +245,9 @@
     </div>
 
     <div class="grid3" style="margin-top:clamp(20px,3vw,40px)">
-      <article class="card reveal"><h3>Reverse direction</h3><p>High leaving this year predicts a <em>lower</em> development score next year just as strongly (−0.58 vs −0.48), so the year-ahead pattern can’t show which comes first.</p></article>
-      <article class="card reveal"><h3>Horse race</h3><p>Once next year’s score is known, this year’s score adds nothing detectable to predicting next year’s leaving (−0.08, CI −0.22 to 0.07).</p></article>
-      <article class="card reveal"><h3>Changes on changes</h3><p>An agency’s rise in score doesn’t predict a fall in leaving the next year, with or without each agency’s own long-run trend, and without small agencies.</p></article>
+      <article class="card reveal"><h3>Reverse direction</h3><p>High leaving this year predicts a <em>lower</em> development score next year just as strongly (−0.58 vs −0.48), so the year-ahead pattern cannot show which comes first.</p></article>
+      <article class="card reveal"><h3>Competing predictors</h3><p>Once next year’s score is known, this year’s score adds nothing detectable to predicting next year’s leaving (−0.08, CI −0.22 to 0.07).</p></article>
+      <article class="card reveal"><h3>Changes in score and in leaving</h3><p>An agency’s rise in score does not predict a fall in leaving the next year, with or without each agency’s own long-run trend, and without small agencies.</p></article>
     </div>
   </section>
 
@@ -252,9 +258,9 @@
       <p>Employees’ sense of being well trained is a useful warning signal for retention risk, especially among newer staff. On this evidence, raising that score is not a lever that lowers turnover intent on its own.</p>
     </div>
     <div class="implic reveal">
-      <div><b>01</b><h3>A signal, not a lever</h3><p>Use perceived training adequacy to flag where retention risk is building, not as a promise that a new program will cut attrition.</p></div>
+      <div><b>01</b><h3>A signal, not a lever</h3><p>Use perceived training adequacy to flag where retention risk is building, not as a promise that a new program will reduce attrition.</p></div>
       <div><b>02</b><h3>Target the first 20 years</h3><p>The link is strongest for newer and mid-career staff, and for people weighing another job in the same sector: internal mobility is at stake.</p></div>
-      <div><b>03</b><h3>Don’t promise turnover cuts from a survey score</h3><p>Agencies whose development scores rose saw slightly higher satisfaction, not lower intent to leave.</p></div>
+      <div><b>03</b><h3>Do not promise lower turnover from a survey score</h3><p>Agencies whose development scores rose saw slightly higher satisfaction, not lower intent to leave.</p></div>
       <div><b>04</b><h3>Measure what training builds</h3><p>Test skill before, right after and 3–6 months after training, roll programs out in stages so later groups act as a comparison, and link training records to real separations, moves and promotions.</p></div>
     </div>
   </section>
@@ -265,7 +271,7 @@
       <h2>My role</h2>
       <div>
         <ul class="li-bullets">
-          <li>Chose the question, wrote the research proposal and made the calls that shape what the report claims: which survey questions to use, how to treat the 2020 COVID survey year, headlining the conservative estimate, and leading with the null result.</li>
+          <li>Chose the question, wrote the research proposal and made the decisions that shape what the report claims: which survey questions to use, how to treat the 2020 COVID survey year, headlining the conservative estimate, and leading with the null result.</li>
           <li>Directed Claude Code (an AI coding agent), which wrote and ran the data pipeline, the models and the first draft of the report; I reviewed and approved each of four milestones, with every decision and its reason logged.</li>
           <li>The project is fully reproducible: six numbered scripts rebuild everything from OPM’s public files, the report is filled from a template so no number is typed by hand, and the pipeline reproduces OPM’s published 2024 figures for 4 agencies to within 0.5 points.</li>
         </ul>
@@ -279,14 +285,14 @@
 
 <footer class="case-foot">
   <div class="wrap">
-    <h2>More projects<br>&amp; how to reach me</h2>
+    <h2>Further projects<br>&amp; contact</h2>
     <div class="pills">
-      <a class="pill" href="../index.html#projects"><span class="fill"></span><span class="label">← All projects</span></a>
-      <a class="pill" href="../index.html#contact"><span class="fill"></span><span class="label">Get in touch</span></a>
+      <a class="pill" href="../projects.html"><span class="fill"></span><span class="label">← All projects</span></a>
+      <a class="pill" href="../index.html#contact"><span class="fill"></span><span class="label">Contact</span></a>
       <a class="pill" href="https://www.linkedin.com/in/hosungk" target="_blank" rel="noopener"><span class="fill"></span><span class="label">LinkedIn</span></a>
     </div>
     <div class="footbar">
-      <div class="fb-col"><span class="fb-k">Version</span><span>2026 © Edition</span></div>
+      <div class="fb-col"><span class="fb-k">Version</span><span>2026 Edition</span></div>
       <div class="fb-col"><span class="fb-k">Project</span><span>FEVS training &amp; retention · Nov 2026</span></div>
     </div>
   </div>
