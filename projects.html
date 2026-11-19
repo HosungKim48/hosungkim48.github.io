@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Projects · Hosung Kim</title>
-<meta name="description" content="Selected analytics projects by Hosung Kim, with case studies.">
+<meta name="description" content="Projects by Hosung Kim: whyplayersquit, an independent player-analytics research site, and USC Projects, a collection of analytics case studies.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Projects · Hosung Kim">
-<meta property="og:description" content="Selected analytics projects by Hosung Kim, with case studies.">
+<meta property="og:description" content="Projects by Hosung Kim: whyplayersquit, an independent player-analytics research site, and USC Projects, a collection of analytics case studies.">
 <meta property="og:url" content="https://hosungkim48.github.io/projects.html">
 <meta property="og:image" content="https://hosungkim48.github.io/assets/hosung-portrait.jpg">
 <meta name="twitter:card" content="summary">
@@ -35,7 +35,7 @@
   <header class="case-hero wrap">
     <span class="eyebrow">Selected projects · 2024 — 2026</span>
     <h1>Projects</h1>
-    <p class="lede">Selected analytics projects, from workforce research and public data to consumer strategy and an AI product.</p>
+    <p class="lede">Two project sites: whyplayersquit, an independent research site on why players quit, and USC Projects, my analytics case studies from USC.</p>
   </header>
 
   <!-- ============ PROJECTS ============ -->
@@ -48,121 +48,35 @@
     <div class="proj-grid">
 
       <article class="proj reveal">
-        <a class="proj-panel" href="https://hosungkim48.github.io/quit-signals/" target="_blank" rel="noopener" aria-label="Open the Quit Signals site">
-          <img src="assets/quit-signals-thumb.png" alt="Quit Signals chart: how common each WARDOGS complaint is versus how much more often its reviewers stopped playing" style="width:100%;height:100%;object-fit:contain;background:#12171C">
+        <a class="proj-panel" href="https://hosungkim48.github.io/whyplayersquit/" target="_blank" rel="noopener" aria-label="Open the whyplayersquit site">
+          <img src="assets/quit-signals-thumb.png" alt="whyplayersquit chart: how common each complaint is versus how much more often its reviewers stopped playing" style="width:100%;height:100%;object-fit:contain;background:#12171C">
         </a>
         <div class="proj-text">
-          <h3>Quit Signals</h3>
-          <p class="proj-tag">Player analytics · Personal project · Nov 2026</p>
-          <p>Which complaints actually come before players quit: 56,187 negative Steam reviews in 29 languages, labeled with AI and linked to whether each reviewer kept playing.</p>
-          <a class="proj-link" href="https://hosungkim48.github.io/quit-signals/" target="_blank" rel="noopener">Visit the site <span aria-hidden="true">↗</span></a>
+          <h3>whyplayersquit</h3>
+          <p class="proj-tag">Player analytics · Independent research site · 2026 — present</p>
+          <p>An independent research site that follows games over time and asks which complaints in public Steam reviews actually come before players quit. Each game is its own project, and every run adds a dated report built with the same method.</p>
+          <a class="proj-link" href="https://hosungkim48.github.io/whyplayersquit/" target="_blank" rel="noopener">Visit the site <span aria-hidden="true">↗</span></a>
         </div>
       </article>
 
       <article class="proj reveal">
-        <a class="proj-panel" href="projects/fevs.html" aria-label="Read the training and retention case study">
-          <div class="mock mock-fevs" aria-hidden="true">
-            <p class="fv-k">Considering leaving within a year, by answer to “I receive the training I need” (2024)</p>
-            <div class="fv-chart">
-              <div class="fv-col"><b>72%</b><i style="--h:72%"></i><span>Strongly<br>disagree</span></div>
-              <div class="fv-col"><b>56%</b><i style="--h:56%"></i><span>Disagree</span></div>
-              <div class="fv-col"><b>45%</b><i style="--h:45%"></i><span>Neither</span></div>
-              <div class="fv-col"><b>32%</b><i style="--h:32%"></i><span>Agree</span></div>
-              <div class="fv-col"><b>23%</b><i style="--h:23%"></i><span>Strongly<br>agree</span></div>
-            </div>
-            <p class="fv-foot">Raw shares, no controls · OPM FEVS public data</p>
-          </div>
-        </a>
-        <div class="proj-text">
-          <h3>Training &amp; Retention in the Federal Workforce</h3>
-          <p class="proj-tag">People analytics · Personal project · Nov 2026</p>
-          <ul>
-            <li>Designed and directed a study of 15 years of OPM Federal Employee Viewpoint Survey data (1.65M responses, 29 agencies) asking whether employees who feel well trained are less likely to plan to leave, with AI-assisted analysis in Python (DuckDB, statsmodels) through a reproducible pipeline.</li>
-            <li>Found the raw ~23-point gap in intent to leave shrinks to about 5 points after controlling for supervisor support, workload and tenure. Agencies whose development scores rose did not see less leaving the following year (p = 0.81); feeling well trained therefore signals retention risk but is not shown to reduce it on its own.</li>
-          </ul>
-          <a class="proj-link" href="projects/fevs.html">Read the case study <span aria-hidden="true">↗</span></a>
-        </div>
-      </article>
-
-      <article class="proj reveal">
-        <a class="proj-panel proj-slope" href="projects/slope-coach.html" aria-label="See the Golf Slope Coach product page">
-          <div class="mock mock-steps" aria-hidden="true">
-            <figure><span class="sl-phone"><img src="assets/slope-coach/reading.jpg?v=2" alt="" loading="lazy"></span><figcaption><b>1</b>Lay the phone down</figcaption></figure>
-            <figure><span class="sl-phone"><img src="assets/slope-coach/tip-uphill.jpg" alt="" loading="lazy"></span><figcaption><b>2</b>See pro tips</figcaption></figure>
-            <figure><span class="sl-phone"><img src="assets/slope-coach/rated.jpg" alt="" loading="lazy"></span><figcaption><b>3</b>Tell us if it helped</figcaption></figure>
-          </div>
-        </a>
-        <div class="proj-text">
-          <h3>Golf Slope Coach</h3>
-          <p class="proj-tag">Product &amp; business model · Two-sided market · Nov 2026</p>
-          <ul>
-            <li>Designed a two-sided model that links golfers in golf GPS apps with golf coaches: apps license an on-phone slope reader as a premium feature, and coaches pay a referral fee when a golfer struggling with a lie books a lesson for it.</li>
-            <li>Built a working iPhone app (Swift, Core Motion; AI-assisted build with Claude Code) that reads the lie, names it as one of 49 lie types and gives a four-line tip. Mapped four kinds of competitors and the golf-rules risk, and planned a pilot to test the model's rates.</li>
-          </ul>
-          <a class="proj-link" href="projects/slope-coach.html">See the product and model <span aria-hidden="true">↗</span></a>
-        </div>
-      </article>
-
-      <article class="proj reveal">
-        <a class="proj-panel" href="https://organizationdesign.github.io/homepage/" target="_blank" rel="noopener" aria-label="Open the Organization Design Database site">
+        <a class="proj-panel" href="usc-projects/" aria-label="Open USC Projects">
           <div class="mock mock-db" aria-hidden="true">
-            <div class="mock-bar"><i></i><i></i><i></i><span>organizationdesign.github.io</span></div>
-            <div class="db-title">Organization Design Database</div>
+            <div class="mock-bar"><i></i><i></i><i></i><span>hosungkim48.github.io/usc-projects</span></div>
+            <div class="db-title">USC Projects</div>
             <div class="db-stats">
-              <div><b>612</b><span>S&amp;P 500 firms</span></div>
-              <div><b>216,018</b><span>executive-firm-years</span></div>
-              <div><b>1993–2024</b><span>coverage</span></div>
+              <div><b>5</b><span>case studies</span></div>
+              <div><b>2024–2026</b><span>USC Marshall</span></div>
+              <div><b>4</b><span>areas</span></div>
             </div>
             <div class="db-rows"><i></i><i></i><i></i><i></i></div>
           </div>
         </a>
         <div class="proj-text">
-          <h3>Organization Design Database</h3>
-          <p class="proj-tag">Public research data · USC Marshall · 2024 — present</p>
-          <ul>
-            <li>Built the public site (Jekyll + GitHub Pages) for a hand-collected dataset on how S&amp;P 500 firms structure their top management, standardized into role categories that stay comparable over time.</li>
-            <li>Wrote the codebook, coverage and methods pages and how-to guide so outside researchers can use data they never helped collect. The dataset supports a paper in <em>Strategic Management Journal</em>.</li>
-          </ul>
-          <a class="proj-link" href="https://organizationdesign.github.io/homepage/" target="_blank" rel="noopener">Visit the site <span aria-hidden="true">↗</span></a>
-        </div>
-      </article>
-
-      <article class="proj reveal">
-        <div class="proj-panel proj-video">
-          <video class="rt-video" controls muted loop playsinline preload="none" poster="assets/roundtable-poster.jpg" aria-label="Roundtable 60-second demo video">
-            <source src="assets/roundtable-demo.mp4" type="video/mp4">
-            <a href="assets/roundtable-demo.mp4">Watch the Roundtable demo video</a>
-          </video>
-        </div>
-        <div class="proj-text">
-          <h3>Roundtable</h3>
-          <p class="proj-tag">AI product · USC Marshall AI Case Competition semifinalist · Fall 2026</p>
-          <ul>
-            <li>Reached the semifinal of the 7th Annual AI Global Business Analytics Case Competition with a 7-person team by building Roundtable, a Discord bot (Python, Claude Code, Gemini) that helps MSBA teams decide together.</li>
-            <li>Scoped the MVP around private, anonymous decision rounds by mapping team-chat failures to root causes, keeping every decision in members’ hands, and verified the build with 577 automated tests.</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="proj reveal">
-        <a class="proj-panel" href="projects/anua.html" aria-label="Read the Anua case study">
-          <div class="mock mock-anua" aria-hidden="true">
-            <p class="an-k">TikTok Shop GMV, 28 days (relative)</p>
-            <div class="an-bars">
-              <div class="an-bar comp"><i></i><span>Competitor<br><b>~20×</b></span></div>
-              <div class="an-bar brand"><i></i><span>Client<br><b>1×</b></span></div>
-            </div>
-            <div class="an-foot"><span><b>200</b> TikTok videos benchmarked</span><span><b>350</b> US consumers surveyed</span></div>
-          </div>
-        </a>
-        <div class="proj-text">
-          <h3>Anua × USC KOJOBS</h3>
-          <p class="proj-tag">Industry partnership · Consumer analytics · Fall 2025</p>
-          <ul>
-            <li>Led data collection and analysis for a 5-person consulting team, benchmarking 200 TikTok videos and surveying 350 US consumers; found a competitor drove ~20× the brand’s TikTok Shop GMV over 28 days.</li>
-            <li>Identified a pricing sweet spot through price-sensitivity analysis and won client adoption of the team’s pricing plan with recommendations on pricing, bundling and review accumulation.</li>
-          </ul>
-          <a class="proj-link" href="projects/anua.html">Read the case study <span aria-hidden="true">↗</span></a>
+          <h3>USC Projects</h3>
+          <p class="proj-tag">Case studies · USC Marshall · 2024 — 2026</p>
+          <p>Five analytics projects from my time at USC: workforce research, a public research database, consumer strategy, and AI products.</p>
+          <a class="proj-link" href="usc-projects/">See all five <span aria-hidden="true">→</span></a>
         </div>
       </article>
 
